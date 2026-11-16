@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ShieldCheck, Truck, Headphones, BadgeCheck, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Truck, Headphones, BadgeCheck, CheckCircle2 } from 'lucide-react';
 import ProductActions from '../product-actions';
 import { products } from '../../catalog';
 
@@ -11,7 +10,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!p) notFound();
   const Icon = p.Icon;
   return <main className="container product-detail-page">
-    <nav className="product-breadcrumb"><Link href="/">Home</Link><ChevronRight size={13} /><Link href="/categories">{'Categories'}</Link><ChevronRight size={13} /><span>{p.category}</span></nav>
     <section className="product-detail-layout">
       <div className="product-gallery"><div className="product-main-visual"><span className="product-visual-tag">{p.tag}</span><div className="product-detail-orb"><Icon size={142} strokeWidth={1.05} /></div><span className="visual-caption">NEXT TECH · PRODUCT PREVIEW</span></div><div className="product-gallery-note"><ShieldCheck size={17} /><span>Illustrative product preview. Actual product photos will be added to the catalogue.</span></div></div>
       <div className="product-detail-info"><div className="product-detail-category">{p.category}</div><h1>{p.name}</h1><div className="product-detail-rating"><span className="rating-stars">★★★★★</span><span>Product information preview</span></div><p className="product-detail-summary">{p.summary}</p><div className="product-detail-price-row"><strong>{p.price}</strong><span>Demo price — confirm before ordering</span></div><div className="product-detail-stock"><span className="stock-dot" />Availability will be confirmed before order</div><div className="product-detail-divider" /><ProductActions product={{ slug: p.slug, name: p.name, price: p.price, category: p.category }} /><div className="product-service-points"><div><Truck size={18} /><span><b>Delivery</b><small>Across Bangladesh</small></span></div><div><Headphones size={18} /><span><b>Support</b><small>Product assistance</small></span></div><div><BadgeCheck size={18} /><span><b>Shopping</b><small>Clear product details</small></span></div></div></div>
