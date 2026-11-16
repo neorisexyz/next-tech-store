@@ -26,6 +26,6 @@ return <main className="container" style={{paddingTop:30,minHeight:'75vh'}}>
 <label className="searchbox" style={{maxWidth:480,width:'100%',marginBottom:24}}><Search size={17}/><input placeholder={lang==='BN'?'পণ্য খুঁজুন...':'Search products...'} value={q} onChange={e=>setQ(e.target.value)}/></label>
 <div className="product-grid">{list.map(({name,bn,category,slug,price,Icon})=><article className="product" key={name}><Link href={'/product/'+slug} className="product-visual" style={{textDecoration:'none'}}><div className="product-symbol"><Icon size={49} strokeWidth={1.35}/></div></Link><div className="product-info"><div className="product-type">{category}</div><Link href={"/product/"+slug} style={{textDecoration:"none",color:"inherit"}}><h3>{lang==='BN'?bn:name}</h3></Link><div className="product-bottom"><span className="price">{price}</span><div style={{display:'flex',gap:7}}><button className="heart" aria-label="Save to wishlist" aria-pressed={isWishlisted(slug)} onClick={()=>toggleWishlist({slug,name,price,category})}><Heart size={14} fill={isWishlisted(slug)?'currentColor':'none'}/></button><button className="addbtn" onClick={()=>addToCart({slug,name,price,category})}><ShoppingBag size={13}/> Add</button></div></div></div></article>)}</div>
 {list.length===0&&<p style={{padding:30,textAlign:'center'}}>{lang==='BN'?'কোনো পণ্য পাওয়া যায়নি':'No products found.'}</p>}
-<div style={{padding:'35px 0'}}><Link className="textlink" href="/">← {lang==='BN'?'হোমে ফিরে যান':'Back to Home'}</Link></div>
+
 </main>
 }
