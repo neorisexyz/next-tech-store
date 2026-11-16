@@ -1,7 +1,18 @@
+'use client';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { Router, Wifi, BatteryCharging, Camera, Monitor, Zap, Cable, ShieldCheck } from 'lucide-react';
-const cats=[
-{slug:'router',name:'Router',bn:'রাউটার',Icon:Router},{slug:'onu',name:'ONU / XPON ONU',bn:'ONU / XPON ONU',Icon:Wifi},{slug:'mini-ups',name:'Mini UPS',bn:'মিনি UPS',Icon:BatteryCharging},{slug:'cctv-ip-camera',name:'CCTV IP Camera',bn:'CCTV IP ক্যামেরা',Icon:Camera},{slug:'analog-camera',name:'Analog Camera',bn:'অ্যানালগ ক্যামেরা',Icon:Camera},{slug:'dvr-nvr-xvr',name:'DVR / NVR / XVR',bn:'DVR / NVR / XVR',Icon:Monitor},{slug:'poe-switch',name:'PoE Switch',bn:'PoE সুইচ',Icon:Zap},{slug:'networking-accessories',name:'Networking Accessories',bn:'নেটওয়ার্কিং অ্যাক্সেসরিজ',Icon:Cable},{slug:'camera-accessories',name:'Camera Accessories',bn:'ক্যামেরা অ্যাক্সেসরিজ',Icon:ShieldCheck}
-];
-export default async function CategoryPage({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const cat=cats.find(x=>x.slug===slug);if(!cat)notFound();const Icon=cat.Icon;return <main className="container" style={{paddingTop:35,minHeight:'75vh'}}><div className="hero" style={{minHeight:230,gridTemplateColumns:'1fr auto',padding:35,alignItems:'center'}}><div><div className="eyebrow">NEXT TECH COLLECTION</div><h1 style={{fontSize:38,margin:'15px 0'}}>{cat.name}</h1><p>Explore our {cat.name} collection. Product listings and live inventory will be connected in the next store phase.</p><Link className="btn primary" href="/shop">Browse all products</Link></div><div className="cat-icon" style={{width:100,height:100}}><Icon size={48}/></div></div></main>}
+import { notFound, useParams } from 'next/navigation';
+import { useStore } from '../../store-context';
+import { Heart, ShoppingBag } from 'lucide-react';
+import { categories, products } from '../../catalog';
+export default function CategoryPage() {
+  const params = useParams<{ slug: string }>();
+  const cat = categories.find(x => x.slug === params.slug);
+  const { addToCart, toggleWishlist, isWishlisted } = useStore();
+  if (!cat) notFound();
+  const list = products.filter(p => p.category === cat.name);
+  const Icon = cat.Icon;
+  return <main className="container" style={{ paddingTop: 30, minHeight: '75vh' }}>
+    <section className="hero" style={{ minHeight: 190, gridTemplateColumns: '1fr auto', padding: 30, alignItems: 'center', marginBottom: 28 }}><div><div className="eyebrow">NEXT TECH COLLECTION</div><h1 style={{ fontSize: 34, margin: '12px 0' }}>{cat.name}</h1><p>{list.length} {list.length === 1 ? 'product' : 'products'} in this category</p></div><div className="cat-icon" style={{ width: 86, height: 86 }}><Icon size={42} /></div></section>
+    {list.length ? <div className="product-grid">{list.map(({ name, bn, category, slug, price, Icon: ProductIcon }) => <article className="product" key={slug}><Link href={'/product/' + slug} className="product-visual" style={{ textDecoration: 'none' }}><div className="product-symbol"><ProductIcon size={49} strokeWidth={1.35} /></div></Link><div className="product-info"><div className="product-type">{category}</div><Link href={'/product/' + slug} style={{ textDecoration: 'none', color: 'inherit' }}><h3>{name}</h3></Link><div className="product-bottom"><span className="price">{price}</span><div style={{ display: 'flex', gap: 7 }}><button className="heart" aria-label="Save to wishlist" aria-pressed={isWishlisted(slug)} onClick={() => toggleWishlist({ slug, name, price, category })}><Heart size={14} fill={isWishlisted(slug) ? 'currentColor' : 'none'} /></button><button className="addbtn" onClick={() => addToCart({ slug, name, price, category })}><ShoppingBag size={13} /> Add</button></div></div></div></article>)}</div> : <p>No products are listed in this category yet.</p>}
+  </main>;
+}
