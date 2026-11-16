@@ -5,10 +5,10 @@ if($_SERVER['REQUEST_METHOD']==='POST'){csrf_check();$action=$_POST['action']??'
  if($action==='register'){
   $name=trim($_POST['name']??'');$email=filter_var(trim($_POST['email']??''),FILTER_VALIDATE_EMAIL);$phone=trim($_POST['phone']??'');$pass=$_POST['password']??'';
   if(!$name||!$email||strlen($pass)<10){$error='Name, valid email and a password of at least 10 characters are required.';}
-  else{try{$s=db()->prepare('INSERT INTO customers(name,email,phone,password_hash) VALUES(?,?,?,?)');$s->execute([$name,$email,$phone,password_hash($pass,PASSWORD_DEFAULT)]);session_regenerate_id(true);$_SESSION['customer_id']=(int)db()->lastInsertId();$_SESSION['customer_name']=$name;header('Location: '.url('account.php?welcome=1'));exit;}catch(PDOException $ex){$error=$ex->getCode()==='23000'?'This email is already registered.':'Registration could not be completed.';}}
+  else{try{$s=db()->prepare('INSERT INTO customers(name,email,phone,password_hash) VALUES(?,?,?,?)');$s->execute([$name,$email,$phone,password_hash($pass,PASSWORD_DEFAULT)]);session_regenerate_id(true);$_SESSION['customer_id']=(int)db()->lastInsertId();$_SESSION['customer_name']=$name;sync_guest_wishlist((int)$_SESSION['customer_id']);header('Location: '.url('account.php?welcome=1'));exit;}catch(PDOException $ex){$error=$ex->getCode()==='23000'?'This email is already registered.':'Registration could not be completed.';}}
  }elseif($action==='login'){
   $s=db()->prepare("SELECT id,name,password_hash FROM customers WHERE email=? AND status='active' LIMIT 1");$s->execute([trim($_POST['email']??'')]);$c=$s->fetch();
-  if($c&&password_verify($_POST['password']??'',$c['password_hash'])){session_regenerate_id(true);$_SESSION['customer_id']=(int)$c['id'];$_SESSION['customer_name']=$c['name'];header('Location: '.url('account.php'));exit;}$error='Email or password is incorrect.';
+  if($c&&password_verify($_POST['password']??'',$c['password_hash'])){session_regenerate_id(true);$_SESSION['customer_id']=(int)$c['id'];$_SESSION['customer_name']=$c['name'];sync_guest_wishlist((int)$_SESSION['customer_id']);header('Location: '.url('account.php'));exit;}$error='Email or password is incorrect.';
  }
 }
 if(!empty($_GET['welcome']))$success='Your customer account has been created.';
