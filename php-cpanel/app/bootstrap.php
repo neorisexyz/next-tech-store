@@ -39,3 +39,12 @@ function setting(string $key, string $default=''): string {
     try { $s=db()->prepare('SELECT setting_value FROM settings WHERE setting_key=?'); $s->execute([$key]); return (string)($s->fetchColumn() ?: $default); }
     catch (Throwable $t) { return $default; }
 }
+
+function sync_guest_wishlist(int $customerId): void {
+    if (empty($_SESSION['wishlist'])) return;
+    $insert = db()->prepare('INSERT IGNORE INTO wishlists(customer_id,product_id) VALUES(?,?)');
+    foreach (array_unique(array_map('intval', $_SESSION['wishlist'])) as $productId) {
+        if ($productId > 0) $insert->execute([$customerId, $productId]);
+    }
+    unset($_SESSION['wishlist']);
+}
