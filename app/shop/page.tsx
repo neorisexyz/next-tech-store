@@ -4,14 +4,14 @@ import { useMemo, useState } from 'react';
 import { Search, Heart, ShoppingBag, Router, Wifi, BatteryCharging, Camera, Monitor, Zap, Cable } from 'lucide-react';
 
 const items=[
-{name:'Dual-Band Wi-Fi 6 Router',bn:'ডুয়াল-ব্যান্ড Wi-Fi 6 রাউটার',category:'Router',slug:'router',price:'৳ 4,500',Icon:Router},
-{name:'XPON ONU 1GE',bn:'XPON ONU 1GE',category:'ONU / XPON ONU',slug:'onu',price:'৳ 1,250',Icon:Wifi},
-{name:'Mini UPS for Router',bn:'রাউটারের জন্য মিনি UPS',category:'Mini UPS',slug:'mini-ups',price:'৳ 1,650',Icon:BatteryCharging},
-{name:'2MP Smart IP Camera',bn:'2MP স্মার্ট IP ক্যামেরা',category:'CCTV IP Camera',slug:'cctv-ip-camera',price:'৳ 2,850',Icon:Camera},
-{name:'8-Port PoE Network Switch',bn:'৮-পোর্ট PoE নেটওয়ার্ক সুইচ',category:'PoE Switch',slug:'poe-switch',price:'৳ 3,200',Icon:Zap},
-{name:'4 Channel Network Recorder',bn:'৪-চ্যানেল নেটওয়ার্ক রেকর্ডার',category:'DVR / NVR / XVR',slug:'dvr-nvr-xvr',price:'৳ 4,900',Icon:Monitor},
-{name:'Outdoor Bullet Camera',bn:'আউটডোর বুলেট ক্যামেরা',category:'Analog Camera',slug:'analog-camera',price:'৳ 1,850',Icon:Camera},
-{name:'Gigabit Networking Cable',bn:'গিগাবিট নেটওয়ার্কিং ক্যাবল',category:'Networking Accessories',slug:'networking-accessories',price:'৳ 450',Icon:Cable}
+{name:'Dual-Band Wi-Fi 6 Router',bn:'ডুয়াল-ব্যান্ড Wi-Fi 6 রাউটার',category:'Router',slug:'dual-band-wifi-6-router',price:'৳ 4,500',Icon:Router},
+{name:'XPON ONU 1GE',bn:'XPON ONU 1GE',category:'ONU / XPON ONU',slug:'xpon-onu-1ge',price:'৳ 1,250',Icon:Wifi},
+{name:'Mini UPS for Router',bn:'রাউটারের জন্য মিনি UPS',category:'Mini UPS',slug:'mini-ups-for-router',price:'৳ 1,650',Icon:BatteryCharging},
+{name:'2MP Smart IP Camera',bn:'2MP স্মার্ট IP ক্যামেরা',category:'CCTV IP Camera',slug:'2mp-smart-ip-camera',price:'৳ 2,850',Icon:Camera},
+{name:'8-Port PoE Network Switch',bn:'৮-পোর্ট PoE নেটওয়ার্ক সুইচ',category:'PoE Switch',slug:'8-port-poe-network-switch',price:'৳ 3,200',Icon:Zap},
+{name:'4 Channel Network Recorder',bn:'৪-চ্যানেল নেটওয়ার্ক রেকর্ডার',category:'DVR / NVR / XVR',slug:'4-channel-network-recorder',price:'৳ 4,900',Icon:Monitor},
+{name:'Outdoor Bullet Camera',bn:'আউটডোর বুলেট ক্যামেরা',category:'Analog Camera',slug:'outdoor-bullet-camera',price:'৳ 1,850',Icon:Camera},
+{name:'Gigabit Networking Cable',bn:'গিগাবিট নেটওয়ার্কিং ক্যাবল',category:'Networking Accessories',slug:'gigabit-networking-cable',price:'৳ 450',Icon:Cable}
 ];
 export default function ShopPage(){
 const [lang,setLang]=useState<'EN'|'BN'>('EN');const [q,setQ]=useState('');const [saved,setSaved]=useState<string[]>([]);
