@@ -17,7 +17,7 @@ export function generateStaticParams(){return products.map(p=>({slug:p.slug}));}
 export default async function ProductPage({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params;const p=products.find(x=>x.slug===slug);if(!p)notFound();const Icon=p.Icon;
  return <main className="container product-detail-page">
-  <header className="product-page-header"><Link className="brand" href="/" aria-label="NEXT TECH"><strong><span className="brand-next">NEXT</span><span className="brand-tech">TECH</span></strong></Link><Link className="product-back-link" href="/shop">Continue Shopping <ChevronRight size={15}/></Link></header>
+
   <nav className="product-breadcrumb"><Link href="/">Home</Link><ChevronRight size={13}/><Link href="/categories">Categories</Link><ChevronRight size={13}/><span>{p.category}</span></nav>
   <section className="product-detail-layout">
    <div className="product-gallery">
@@ -35,6 +35,6 @@ export default async function ProductPage({params}:{params:Promise<{slug:string}
    </div>
   </section>
   <section className="product-information-section"><div className="product-section-heading"><span>PRODUCT OVERVIEW</span><h2>Designed around your needs.</h2><p>{p.summary}</p></div><div className="product-information-grid"><article className="product-feature-card"><h3>Key highlights</h3>{p.features.map(feature=><div className="product-feature" key={feature}><CheckCircle2 size={17}/><span>{feature}</span></div>)}</article><article className="product-spec-card"><h3>Product information</h3>{p.specs.map(([label,value])=><div className="product-spec-row" key={label}><span>{label}</span><strong>{value}</strong></div>)}</article></div><p className="product-disclaimer">Demo catalogue entry: final model, technical specifications, stock and price must be confirmed by NEXT TECH before purchase.</p></section>
-  <div className="product-bottom-link"><Link href="/shop">← Back to all products</Link></div>
+
  </main>;
 }
