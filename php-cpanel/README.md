@@ -1,35 +1,36 @@
 # NEXT TECH — PHP + MySQL (cPanel edition)
 
-A separate PHP implementation in this folder. The existing Next.js/Vercel application at the repository root is untouched. Upload the **contents of this folder** to your cPanel document root (usually public_html) when hosting is purchased.
+A separate PHP implementation in this folder. The Next.js/Vercel project at the repository root remains untouched.
 
 ## Requirements
-- PHP 8.1+ with PDO MySQL and Fileinfo enabled
+- PHP 8.1+ with PDO MySQL and Fileinfo
 - MySQL 5.7+ / MariaDB
-- Apache with .htaccess support
+- Apache with .htaccess
 
 ## cPanel installation
 1. Create a MySQL database and database user in cPanel; grant ALL PRIVILEGES.
-2. Import database.sql using phpMyAdmin.
-3. Copy config/config.example.php to config/config.php and enter your exact cPanel database name, username and password. Set base_url to your domain (leave blank at the domain root).
-4. Upload the contents of php-cpanel/ into public_html/.
-5. Ensure uploads/products/ is writable by PHP (normally 755; follow host guidance).
-6. Visit /admin/setup.php once to create the first administrator. Use a unique password of at least 12 characters.
-7. Immediately delete admin/setup.php from hosting after creating the administrator.
-8. Sign in at /admin/login.php.
+2. Import the complete `database.sql` in phpMyAdmin. It creates the nine categories plus customer, wishlist and order tables.
+3. Copy `config/config.example.php` to `config/config.php`; enter the exact cPanel database name, user and password. Set `base_url` to your domain (blank at domain root).
+4. Upload the contents of this folder into `public_html/`.
+5. Ensure `uploads/products/` is writable by PHP.
+6. Visit `/admin/setup.php` once to create the first admin with a unique 12+ character password. Immediately delete `admin/setup.php`.
+7. Sign in at `/admin/login.php`.
 
 ## Included
-- Responsive NEXT TECH navy/sky/white storefront
-- Shared header, category strip and fixed bottom navigation
-- Homepage, shop, category and product pages
-- Session-based cart
-- Admin login, dashboard, product create/edit, image upload validation, stock and active/draft status
-- Nine requested categories
+- Responsive storefront, shared header and fixed bottom navigation
+- Homepage, shop, category and product details
+- Session cart and customer registration/login
+- Persistent wishlist for signed-in customers (session wishlist for guests)
+- Checkout with Cash on Delivery, order creation, transactional stock validation/deduction
+- Customer order history
+- Admin product/category management and order status/payment status management
 
-## Later phases
-Customer accounts, persistent wishlist, order management, checkout/payment gateway, delivery integration, real contact details and email/SMS are not connected yet. Prices/inventory must be entered by the store admin; no demo product pricing is seeded.
+## Not yet included
+Online payment gateway, courier API integration, email/SMS notifications, customer password reset, product reviews and configurable business contact details. Checkout currently creates COD orders only. Add real product data and prices in the Admin Panel; no fabricated sample stock/prices are inserted.
 
-## Security
-- Never expose config/config.php publicly; keep credentials private.
+## Security and operations
+- Keep `config/config.php` private; never share database credentials.
 - Enable HTTPS.
-- Delete admin/setup.php after first admin creation.
-- Keep PHP, MySQL and cPanel updated and back up database/uploads.
+- Remove the one-time admin setup file after use.
+- Back up database and uploaded product images regularly.
+- Review cancellation/refund stock handling and business-specific order policies before production launch.
