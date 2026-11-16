@@ -1,0 +1,12 @@
+import Link from 'next/link';
+import { ArrowUpRight, Package, Tags, ShoppingCart, Users, Plus, ExternalLink } from 'lucide-react';
+import { products, categories } from '../catalog';
+export default function AdminDashboard(){
+ const stats=[{label:'Catalogue Products',value:String(products.length),hint:'Demo catalogue entries',Icon:Package},{label:'Categories',value:String(categories.length),hint:'Active store categories',Icon:Tags},{label:'Orders',value:'—',hint:'Order management not connected',Icon:ShoppingCart},{label:'Customers',value:'—',hint:'Customer accounts not connected',Icon:Users}];
+ return <div className="admin-content"><div className="admin-page-heading"><div><div className="admin-eyebrow">OVERVIEW</div><h1>Dashboard</h1><p>Welcome to your NEXT TECH store workspace.</p></div><Link className="admin-primary-btn" href="/admin/products"><Plus size={16}/> Manage Products</Link></div>
+ <div className="admin-notice"><strong>Setup preview</strong><span>This is the first admin interface. Secure administrator login, database storage and live inventory sync are not connected yet. Do not use this preview as a secured production admin panel.</span></div>
+ <div className="admin-stat-grid">{stats.map(({label,value,hint,Icon})=><article className="admin-stat-card" key={label}><div className="admin-stat-top"><span>{label}</span><Icon size={19}/></div><strong>{value}</strong><small>{hint}</small></article>)}</div>
+ <section className="admin-panel-card"><div className="admin-panel-heading"><div><h2>Catalogue snapshot</h2><p>Current sample products in the storefront catalogue.</p></div><Link href="/admin/products">View catalogue <ArrowUpRight size={14}/></Link></div><div className="admin-table-wrap"><table className="admin-table"><thead><tr><th>PRODUCT</th><th>CATEGORY</th><th>PRICE</th><th>STATUS</th></tr></thead><tbody>{products.slice(0,5).map(p=><tr key={p.slug}><td><b>{p.name}</b><small>/{p.slug}</small></td><td>{p.category}</td><td>{p.price}</td><td><span className="admin-status demo">Demo data</span></td></tr>)}</tbody></table></div></section>
+ <div className="admin-quick-links"><Link href="/admin/products"><Package size={18}/><span><b>Product catalogue</b><small>Review product entries and pricing</small></span><ArrowUpRight size={16}/></Link><Link href="/"><ExternalLink size={18}/><span><b>Open storefront</b><small>Preview the customer-facing shop</small></span><ArrowUpRight size={16}/></Link></div>
+ </div>;
+}
