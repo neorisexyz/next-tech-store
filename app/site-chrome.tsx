@@ -13,6 +13,10 @@ export default function SiteChrome(){
  const total=cartItems.reduce((sum,item)=>sum+(Number(item.price.replace(/[^0-9.]/g,''))||0)*item.quantity,0);
  const money=(v:number)=>'৳ '+v.toLocaleString('en-BD');
  const nav=[{href:'/',label:'Home',Icon:Home},{href:'/categories',label:'Categories',Icon:Grid2X2},{href:'/shop',label:'Shop',Icon:Store},{href:'/account',label:'Account',Icon:UserCircle}];
+
+ // Admin has its own navigation; never render the customer storefront chrome there.
+ if(pathname==='/admin'||pathname.startsWith('/admin/')) return null;
+
  return <>
   <header className="site-header">
    <div className="site-header-inner">
