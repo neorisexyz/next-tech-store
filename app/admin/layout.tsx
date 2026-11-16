@@ -1,6 +1,32 @@
+'use client';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { LayoutDashboard, Package, Tags, Settings, Store } from 'lucide-react';
+
+const navItems=[
+ {href:'/admin',label:'Dashboard',Icon:LayoutDashboard},
+ {href:'/admin/products',label:'Products',Icon:Package},
+ {href:'/admin/categories',label:'Categories',Icon:Tags},
+ {href:'/admin/settings',label:'Settings',Icon:Settings},
+];
+
 export default function AdminLayout({children}:{children:ReactNode}){
- return <div className="admin-shell"><aside className="admin-sidebar"><Link href="/admin" className="admin-logo"><span>NEXT</span> <b>TECH</b><small>ADMIN</small></Link><div className="admin-nav-label">WORKSPACE</div><Link href="/admin" className="admin-nav-item"><LayoutDashboard size={17}/>Dashboard</Link><Link href="/admin/products" className="admin-nav-item"><Package size={17}/>Products</Link><Link href="/admin/categories" className="admin-nav-item"><Tags size={17}/>Categories</Link><div className="admin-nav-label">STORE</div><Link href="/" className="admin-nav-item"><Store size={17}/>View Store</Link><Link href="/admin/settings" className="admin-nav-item"><Settings size={17}/>Settings</Link><div className="admin-sidebar-foot">NEXT TECH<br/><span>Store management</span></div></aside><main className="admin-main"><header className="admin-topbar"><div><span className="admin-topbar-kicker">MANAGEMENT CONSOLE</span><strong>Store Admin</strong></div><Link href="/" className="admin-view-store">View Store ↗</Link></header>{children}</main></div>;
+ const pathname=usePathname();
+ return <div className="admin-shell">
+  <aside className="admin-sidebar">
+   <Link href="/admin" className="admin-logo"><span>NEXT</span> <b>TECH</b><small>ADMIN WORKSPACE</small></Link>
+   <div className="admin-nav-label">WORKSPACE</div>
+   <nav className="admin-nav" aria-label="Admin navigation">
+    {navItems.map(({href,label,Icon})=><Link key={href} href={href} className={'admin-nav-item'+(pathname===href?' active':'')} aria-current={pathname===href?'page':undefined}><Icon size={17}/><span>{label}</span></Link>)}
+   </nav>
+   <div className="admin-nav-label admin-store-label">STORE</div>
+   <Link href="/" className="admin-nav-item admin-store-link"><Store size={17}/><span>View Store</span></Link>
+   <div className="admin-sidebar-foot">NEXT TECH<br/><span>Store management</span></div>
+  </aside>
+  <main className="admin-main">
+   <header className="admin-topbar"><div><span className="admin-topbar-kicker">MANAGEMENT CONSOLE</span><strong>Store Admin</strong></div><Link href="/" className="admin-view-store"><Store size={15}/> <span>View Store</span></Link></header>
+   {children}
+  </main>
+ </div>;
 }
