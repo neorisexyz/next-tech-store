@@ -98,3 +98,56 @@
 .product-information-grid{grid-template-columns:1fr;gap:12px}
 .product-feature-card,.product-spec-card{padding:19px}
 }
+
+
+/* One persistent, shared site header and bottom navigation across every route */
+.site-header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 5px 18px #102a4308}
+.site-header-inner{width:min(1180px,calc(100% - 40px));height:76px;margin:auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px}
+.site-brand{display:flex;justify-content:center;line-height:1}
+.site-brand strong{display:flex;align-items:center;gap:6px;font-size:27px;letter-spacing:1.1px;font-weight:900;font-family:Arial,Helvetica,sans-serif}
+.site-search{display:flex;align-items:center;gap:8px;max-width:280px;min-width:0}
+.site-search button{border:0;background:#f3f8fb;color:var(--navy);width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex:none}
+.site-search input{width:100%;min-width:0;border:1px solid #e7eef3;background:#f7fafc;border-radius:24px;padding:11px 14px;outline:0;font-size:12px}
+.site-header-actions{display:flex;justify-content:flex-end;align-items:center;gap:18px}
+.site-icon-button{position:relative;border:0;background:transparent;color:var(--navy);padding:8px;display:grid;place-items:center}
+.site-cart-button .count{right:-1px;top:0}
+.site-bottom-nav{position:fixed;z-index:99;left:0;right:0;bottom:0;min-height:64px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;align-items:center;gap:clamp(30px,8vw,110px);background:#fff;border-top:1px solid var(--line);box-shadow:0 -5px 20px #102a4309}
+.site-bottom-nav a{min-width:62px;color:#7890a1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:10px;font-weight:650}
+.site-bottom-nav a.active{color:#087eaf;font-weight:850}
+.site-drawer-backdrop{position:fixed;inset:0;z-index:120;background:#07182770;border:0}
+.site-cart-drawer{position:fixed;z-index:121;right:0;top:0;height:100dvh;width:min(400px,90vw);background:#fff;box-shadow:-15px 0 40px #102a4325;padding:22px;display:flex;flex-direction:column}
+.site-drawer-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px}
+.site-drawer-head h2{margin:0;color:var(--navy);font-size:20px}
+.site-drawer-head h2 small{font-size:13px;color:#1684b8}
+.site-drawer-head button{border:0;background:#f0f6f9;border-radius:50%;width:36px;height:36px;color:var(--navy);display:grid;place-items:center}
+.site-cart-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--navy);gap:10px}
+.site-cart-empty p{font-size:13px;color:var(--muted);margin:0 0 12px}
+.site-cart-items{flex:1;overflow:auto}
+.site-cart-row{padding:17px 0;border-bottom:1px solid var(--line)}
+.site-cart-item-info{display:flex;flex-direction:column;gap:9px}
+.site-cart-item-info>a{font-size:13px;font-weight:750;color:var(--navy)}
+.site-cart-item-info>strong{font-size:13px;color:var(--navy)}
+.site-qty{display:flex;align-items:center;gap:10px}
+.site-qty button{width:29px;height:29px;border:1px solid var(--line);border-radius:7px;background:#f7fafc;color:var(--navy);font-weight:800}
+.site-qty span{font-size:12px;font-weight:800}
+.site-qty .site-remove{margin-left:auto;color:#b04444}
+.site-cart-summary{border-top:1px solid var(--line);padding-top:16px}
+.site-cart-summary>div{display:flex;justify-content:space-between;color:var(--navy);font-size:14px}
+.site-cart-summary p{font-size:11px;line-height:1.5;color:var(--muted);margin:10px 0 14px}
+.site-cart-summary .btn{width:100%;justify-content:center}
+body{padding-bottom:84px}
+.topbar,.container.header,.bottom-nav,.cart-drawer,.drawer-backdrop{display:none!important}
+main.container>div:first-child{display:none!important}
+.product-page-header{display:none!important}
+@media(max-width:600px){
+ .site-header-inner{width:calc(100% - 24px);height:68px;grid-template-columns:1fr auto 1fr;gap:5px}
+ .site-brand strong{font-size:21px;gap:4px;letter-spacing:.8px}
+ .site-search{width:38px}
+ .site-search button{width:36px;height:36px}
+ .site-search input{display:none}
+ .site-header-actions{gap:10px}
+ .site-icon-button{padding:7px}
+ .site-bottom-nav{gap:0;justify-content:space-around;min-height:61px}
+ .site-bottom-nav a{min-width:0;flex:1;font-size:9px}
+ body{padding-bottom:82px}
+}
