@@ -1,8 +1,6 @@
 <?php
-$pageTitle = $pageTitle ?? 'NEXT TECH — The Future, Solved.';
-$categories = [];
-try { $categories = db()->query('SELECT name, slug FROM categories WHERE is_active=1 ORDER BY sort_order, name')->fetchAll(); } catch(Throwable $t) {}
-?>
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102a43"><title><?=e($pageTitle)?></title><link rel="stylesheet" href="<?=e(url('assets/css/style.css'))?>"></head><body>
-<header class="site-header"><a class="search-link" href="<?=e(url('shop.php'))?>" aria-label="Search products">⌕ <span>Search</span></a><a class="wordmark" href="<?=e(url('index.php'))?>"><span>NEXT</span> <b>TECH</b></a><nav class="header-actions"><a href="<?=e(url('wishlist.php'))?>" aria-label="Wishlist">♡</a><a href="<?=e(url('cart.php'))?>" aria-label="Quick cart">🛒<?php if (!empty($_SESSION['cart'])): ?><small class="count"><?=array_sum($_SESSION['cart'])?></small><?php endif; ?></a></nav></header>
-<nav class="category-strip"><?php foreach($categories as $cat): ?><a href="<?=e(url('category.php?slug='.rawurlencode($cat['slug'])))?>"><?=e($cat['name'])?></a><?php endforeach; ?></nav><main class="page-shell">
+$pageTitle=$pageTitle??'NEXT TECH — The Future, Solved.';$categories=[];
+try{$categories=db()->query('SELECT name,slug FROM categories WHERE is_active=1 ORDER BY sort_order,name')->fetchAll();}catch(Throwable $t){}
+?><!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102a43"><title><?=e($pageTitle)?></title><link rel="stylesheet" href="<?=e(url('assets/css/style.css'))?>"></head><body>
+<header class="site-header"><a class="search-link" href="<?=e(url('shop.php'))?>" aria-label="Search products">⌕ <span>Search</span></a><a class="wordmark" href="<?=e(url('index.php'))?>"><span>NEXT</span> <b>TECH</b></a><nav class="header-actions"><a href="<?=e(url('wishlist.php'))?>" aria-label="Wishlist">♡</a><a href="<?=e(url('cart.php'))?>" aria-label="Quick cart">🛒<?php $cartCount=array_sum($_SESSION['cart']??[]);if($cartCount>0):?><small class="count"><?=$cartCount?></small><?php endif;?></a></nav></header>
+<nav class="category-strip"><?php foreach($categories as $cat):?><a href="<?=e(url('category.php?slug='.rawurlencode($cat['slug'])))?>"><?=e($cat['name'])?></a><?php endforeach;?></nav><main class="page-shell">
