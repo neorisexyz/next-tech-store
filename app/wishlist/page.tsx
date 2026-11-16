@@ -1,2 +1,13 @@
+'use client';
 import Link from 'next/link';
-export default function Page(){return <main className="container" style={{paddingTop:30,minHeight:'75vh'}}><div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:40}}><Link className="brand" href="/"><strong><span className="brand-next">NEXT</span><span className="brand-tech">TECH</span></strong></Link><nav style={{display:'flex',gap:16}}><Link className="textlink" href="/shop">Shop</Link><Link className="textlink" href="/categories">Categories</Link></nav></div><section className="hero" style={{display:'block',padding:40,minHeight:280}}><div className="eyebrow">NEXT TECH</div><h1 style={{fontSize:38}}>Your Wishlist</h1><p style={{maxWidth:620,lineHeight:1.8}}>Keep your favourite technology products in one place. Saved items will appear here after wishlist storage is connected.</p><p style={{color:'var(--muted)'}}>Your wishlist is currently empty.</p><div style={{marginTop:25,display:'flex',gap:12,flexWrap:'wrap'}}><Link className="btn primary" href="/shop">Continue Shopping</Link><Link className="btn secondary" href="/">Back to Home</Link></div></section></main>}
+import { Heart, Trash2 } from 'lucide-react';
+import { useStore } from '../store-context';
+export default function WishlistPage(){
+ const {wishlistItems,removeFromWishlist,addToCart}=useStore();
+ return <main className="container" style={{paddingTop:30,minHeight:'75vh',paddingBottom:80}}>
+  <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:32}}><Link className="brand" href="/"><strong><span className="brand-next">NEXT</span><span className="brand-tech">TECH</span></strong></Link><Link className="textlink" href="/shop">Continue Shopping</Link></div>
+  <h1 style={{fontSize:32,color:'var(--navy)'}}>Your Wishlist</h1>
+  {wishlistItems.length===0?<section className="hero" style={{display:'block',padding:32,minHeight:230}}><Heart size={34}/><h2 style={{color:'var(--navy)'}}>Your wishlist is empty</h2><p>Tap the heart button on a product to save it here.</p><Link className="btn primary" href="/shop">Explore Products</Link></section>:
+  <div className="product-grid">{wishlistItems.map(item=><article className="product" key={item.slug}><div className="product-info"><div className="product-type">{item.category}</div><Link href={'/product/'+item.slug}><h3>{item.name}</h3></Link><div className="product-bottom"><strong className="price">{item.price}</strong><div style={{display:'flex',gap:7}}><button className="addbtn" onClick={()=>addToCart(item)}>Add to Cart</button><button className="heart" aria-label="Remove from wishlist" onClick={()=>removeFromWishlist(item.slug)}><Trash2 size={14}/></button></div></div></div></article>)}</div>}
+ </main>
+}
