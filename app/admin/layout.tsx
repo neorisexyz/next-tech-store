@@ -1,0 +1,6 @@
+import type { ReactNode } from 'react';
+import Link from 'next/link';
+import { LayoutDashboard, Package, Tags, Settings, Store } from 'lucide-react';
+export default function AdminLayout({children}:{children:ReactNode}){
+ return <div className="admin-shell"><aside className="admin-sidebar"><Link href="/admin" className="admin-logo"><span>NEXT</span> <b>TECH</b><small>ADMIN</small></Link><div className="admin-nav-label">WORKSPACE</div><Link href="/admin" className="admin-nav-item"><LayoutDashboard size={17}/>Dashboard</Link><Link href="/admin/products" className="admin-nav-item"><Package size={17}/>Products</Link><Link href="/admin/categories" className="admin-nav-item"><Tags size={17}/>Categories</Link><div className="admin-nav-label">STORE</div><Link href="/" className="admin-nav-item"><Store size={17}/>View Store</Link><Link href="/admin/settings" className="admin-nav-item"><Settings size={17}/>Settings</Link><div className="admin-sidebar-foot">NEXT TECH<br/><span>Store management</span></div></aside><main className="admin-main"><header className="admin-topbar"><div><span className="admin-topbar-kicker">MANAGEMENT CONSOLE</span><strong>Store Admin</strong></div><Link href="/" className="admin-view-store">View Store ↗</Link></header>{children}</main></div>;
+}
