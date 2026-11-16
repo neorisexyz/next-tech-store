@@ -137,7 +137,6 @@
 .site-cart-summary .btn{width:100%;justify-content:center}
 body{padding-bottom:84px}
 .topbar,.container.header,.bottom-nav,.cart-drawer,.drawer-backdrop{display:none!important}
-main.container>div:first-child{display:none!important}
 .product-page-header{display:none!important}
 @media(max-width:600px){
  .site-header-inner{width:calc(100% - 24px);height:68px;grid-template-columns:1fr auto 1fr;gap:5px}
@@ -151,3 +150,10 @@ main.container>div:first-child{display:none!important}
  .site-bottom-nav a{min-width:0;flex:1;font-size:9px}
  body{padding-bottom:82px}
 }
+
+/* Shared catalogue category filters */
+.catalog-filter-row{display:flex;gap:9px;overflow-x:auto;padding:2px 0 18px;margin-bottom:10px;scrollbar-width:thin}
+.catalog-filter{flex:none;border:1px solid #dce7ee;background:#fff;color:#536b7b;border-radius:22px;padding:9px 15px;font-size:11px;font-weight:750;white-space:nowrap;cursor:pointer;transition:all .18s ease}
+.catalog-filter:hover,.catalog-filter.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.category small{display:block;margin-top:5px;color:#8295a3;font-size:10px}
+@media(max-width:600px){.catalog-filter-row{margin-right:-12px;padding-right:12px}.catalog-filter{padding:8px 12px;font-size:10px}}
