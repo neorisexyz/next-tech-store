@@ -21,8 +21,8 @@ A separate PHP implementation in this folder. The Next.js/Vercel project at the 
 - Homepage, shop, category and product details
 - Session cart and customer registration/login
 - Persistent wishlist for signed-in customers (session wishlist for guests)
-- Checkout with Cash on Delivery, order creation, transactional stock validation/deduction
-- Customer order history
+- Checkout with Cash on Delivery, order creation, transactional stock validation/deduction; guests are returned to checkout after sign-in/registration
+- Customer order history with private order tracking page and live status timeline (Pending → Confirmed → Processing → Shipped → Delivered; cancellation is shown separately)
 - Admin product/category management and order status/payment status management
 
 ## Not yet included
