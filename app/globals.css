@@ -383,3 +383,98 @@ body{padding-bottom:84px}
  .cart-summary{padding:18px}
  .wishlist-product .product-info{padding:12px}
 }
+
+
+/* NEXT TECH admin dashboard — responsive overview */
+.admin-dashboard{max-width:1440px}
+.admin-dashboard-notice{display:flex;align-items:flex-start;gap:13px;padding:16px 18px;margin:0 0 22px;border:1px solid #d8eaf4;border-radius:12px;background:linear-gradient(110deg,#f1f9fd,#fff);color:#496679}
+.admin-dashboard-notice-icon{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:9px;background:#e0f3fc;color:#1684b8}
+.admin-dashboard-notice strong{display:block;color:#173b53;font-size:12px;margin:1px 0 4px}
+.admin-dashboard-notice p{margin:0;font-size:11px;line-height:1.65;color:#637f91}
+.admin-dashboard-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:19px}
+.admin-dashboard-stat{min-width:0;padding:18px 19px 17px;border:1px solid #e5edf2;border-radius:12px;background:#fff;box-shadow:0 4px 15px #102a4305}
+.admin-dashboard-stat-head{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#718797;font-size:11px;font-weight:750}
+.admin-dashboard-stat-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:10px}
+.admin-dashboard-stat-icon.blue{background:#eaf4fb;color:#2879a4}
+.admin-dashboard-stat-icon.sky{background:#e7f8ff;color:#1496c8}
+.admin-dashboard-stat-icon.muted{background:#f0f3f6;color:#8799a5}
+.admin-dashboard-stat>strong{display:block;margin:13px 0 4px;color:#102a43;font-size:30px;line-height:1.1;letter-spacing:-.8px}
+.admin-dashboard-stat>small{color:#8a9ba6;font-size:10px;line-height:1.4}
+.admin-dashboard-main-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.85fr);gap:16px;margin-bottom:16px}
+.admin-dashboard-bottom-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:16px}
+.admin-dashboard-card{min-width:0;border:1px solid #e5edf2;border-radius:12px;background:#fff;box-shadow:0 4px 15px #102a4305;overflow:hidden}
+.admin-dashboard-card-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:19px 20px 16px;border-bottom:1px solid #edf2f5}
+.admin-dashboard-section-label{display:block;margin-bottom:6px;color:#1684b8;font-size:8px;font-weight:900;letter-spacing:1.5px}
+.admin-dashboard-card-heading h2{margin:0;color:#17384d;font-size:15px;letter-spacing:-.2px}
+.admin-dashboard-card-heading p{margin:5px 0 0;color:#8294a0;font-size:10px;line-height:1.5}
+.admin-dashboard-period{flex:none;padding:7px 9px;border:1px solid #e7edf2;border-radius:20px;color:#8798a4;background:#fafcfd;font-size:9px;font-weight:700}
+.admin-dashboard-empty-chart{min-height:235px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.admin-dashboard-empty-chart>span,.admin-dashboard-order-empty>span{width:49px;height:49px;display:grid;place-items:center;border-radius:14px;background:#eef8fd;color:#1684b8}
+.admin-dashboard-empty-chart strong,.admin-dashboard-order-empty strong{margin-top:13px;color:#29485d;font-size:12px}
+.admin-dashboard-empty-chart p,.admin-dashboard-order-empty p{max-width:330px;margin:6px 0 0;color:#8798a4;font-size:10px;line-height:1.65}
+.admin-dashboard-heading-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:#eef8fd;color:#1684b8}
+.admin-dashboard-order-empty{min-height:173px;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.admin-dashboard-card-foot{min-height:43px;padding:10px 17px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #edf2f5;color:#8294a0;font-size:9px}
+.admin-dashboard-card-foot>span:first-child{display:inline-flex;align-items:center;gap:6px}
+.admin-coming-soon{padding:5px 8px;border-radius:20px;background:#f2f5f7;color:#8495a0;font-size:8px;font-weight:800;white-space:nowrap}
+.admin-dashboard-text-link{display:inline-flex;align-items:center;gap:3px;color:#1684b8;font-size:10px;font-weight:800;white-space:nowrap}
+.admin-dashboard-product-list{padding:2px 18px}
+.admin-dashboard-product-row{min-height:58px;display:flex;align-items:center;gap:11px;border-bottom:1px solid #eff3f6}
+.admin-dashboard-product-row:last-child{border-bottom:0}
+.admin-dashboard-product-icon{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:9px;background:#eef8fd;color:#1684b8}
+.admin-dashboard-product-name{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.admin-dashboard-product-name strong{overflow:hidden;color:#29475b;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
+.admin-dashboard-product-name small{color:#8a9ba6;font-size:9px}
+.admin-dashboard-product-price{flex:none;color:#17384d;font-size:10px}
+.admin-dashboard-actions{padding:7px 17px 5px}
+.admin-dashboard-action{min-height:58px;display:flex;align-items:center;gap:11px;border-bottom:1px solid #eff3f6}
+.admin-dashboard-action:last-child{border-bottom:0}
+.admin-dashboard-action>span:first-child{width:33px;height:33px;flex:none;display:grid;place-items:center;border-radius:9px;background:#eef8fd;color:#1684b8}
+.admin-dashboard-action>svg{color:#9aabb5}
+.admin-dashboard-action-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.admin-dashboard-action-copy strong{color:#29475b;font-size:10px}
+.admin-dashboard-action-copy small{color:#8a9ba6;font-size:9px}
+.admin-dashboard-action:hover .admin-dashboard-action-copy strong{color:#1684b8}
+.admin-dashboard-help{display:flex;align-items:flex-start;gap:8px;margin:7px 16px 15px;padding:11px;border-radius:8px;background:#f6fafc;color:#8294a0;font-size:9px;line-height:1.5}
+.admin-dashboard-help svg{flex:none;color:#1684b8}
+.admin-dashboard-footer-link{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px;color:#8395a1;font-size:10px}
+.admin-dashboard-footer-link a{display:inline-flex;align-items:center;gap:6px;color:#1684b8;font-weight:800}
+@media(max-width:1050px){.admin-dashboard-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-dashboard-main-grid,.admin-dashboard-bottom-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){
+ .admin-dashboard-notice{gap:10px;padding:13px;margin-bottom:16px}
+ .admin-dashboard-notice-icon{width:30px;height:30px}
+ .admin-dashboard-notice strong{font-size:11px}
+ .admin-dashboard-notice p{font-size:10px}
+ .admin-dashboard-stats{gap:9px;margin-bottom:13px}
+ .admin-dashboard-stat{padding:13px;border-radius:10px}
+ .admin-dashboard-stat-head{font-size:9px}
+ .admin-dashboard-stat-icon{width:29px;height:29px}
+ .admin-dashboard-stat-icon svg{width:16px;height:16px}
+ .admin-dashboard-stat>strong{font-size:25px;margin:11px 0 4px}
+ .admin-dashboard-stat>small{font-size:9px}
+ .admin-dashboard-main-grid,.admin-dashboard-bottom-grid{gap:12px;margin-bottom:12px}
+ .admin-dashboard-card{border-radius:10px}
+ .admin-dashboard-card-heading{padding:15px 14px 13px}
+ .admin-dashboard-card-heading h2{font-size:13px}
+ .admin-dashboard-card-heading p{font-size:9px}
+ .admin-dashboard-period{padding:6px 7px;font-size:8px}
+ .admin-dashboard-empty-chart{min-height:190px;padding:22px 18px}
+ .admin-dashboard-empty-chart>span{width:43px;height:43px}
+ .admin-dashboard-empty-chart strong,.admin-dashboard-order-empty strong{font-size:11px}
+ .admin-dashboard-empty-chart p,.admin-dashboard-order-empty p{font-size:9px}
+ .admin-dashboard-order-empty{min-height:150px;padding:17px}
+ .admin-dashboard-card-foot{min-height:39px;padding:9px 13px;font-size:8px}
+ .admin-dashboard-product-list{padding:1px 13px}
+ .admin-dashboard-product-row{min-height:54px;gap:9px}
+ .admin-dashboard-product-icon{width:30px;height:30px}
+ .admin-dashboard-product-icon svg{width:16px;height:16px}
+ .admin-dashboard-product-name strong,.admin-dashboard-product-price{font-size:9px}
+ .admin-dashboard-product-name small{font-size:8px}
+ .admin-dashboard-actions{padding:5px 13px}
+ .admin-dashboard-action{min-height:55px;gap:9px}
+ .admin-dashboard-action>span:first-child{width:30px;height:30px}
+ .admin-dashboard-action-copy strong{font-size:9px}
+ .admin-dashboard-action-copy small{font-size:8px}
+ .admin-dashboard-help{margin:5px 12px 12px;padding:9px;font-size:8px}
+ .admin-dashboard-footer-link{align-items:flex-start;flex-direction:column;font-size:9px}
+}
